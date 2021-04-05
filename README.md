@@ -15,7 +15,7 @@ Also, if this idea is no good for some reason, could have a game where the fox s
 
 ### Wireframe
 I'm going to try to insert the wireframe I made here
-![Wireframe](https://github.com/theneonwombat/OutFox/blob/main/tree/master/dist/images/wireframe.png)
+![Wireframe](https://github.com/theneonwombat/OutFox/tree/master/dist/images/wireframe.png)
 
 ### Timeline
 
