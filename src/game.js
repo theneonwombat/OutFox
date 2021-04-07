@@ -26,7 +26,7 @@ class Game {
     
     
 Game.DIM_X = 800;
-Game.DIM_Y = 600;
+Game.DIM_Y = 500;
 Game.FPS = 32;
 
 export default Game;

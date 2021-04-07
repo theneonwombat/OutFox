@@ -1,5 +1,13 @@
 import Entity from "./entity"
 
+//starting y
+const WALK_DOWN = [9, 41, 73, 105]
+const WALK_RIGHT = [3, 34, 67, 98]
+const WALK_UP = [9, 41, 73, 105]
+const WALK_LEFT = [4, 36, 68, 100]
+
+const SIT_DOWN = [9, 41, 73, 148]
+
 class Fox extends Entity {
   constructor(options) {
     super(options);
@@ -8,11 +16,11 @@ class Fox extends Entity {
     this.pos = [400, 300];
     this.box = [15, 24];
     this.frameIndex = 0;
-    // this.walkDir = 'down';
+    this.walkDir = 'down';
     this.scale = 2;
-    // this.tickCount = 0;
-    // this.ticksPerFrame = 6;
-    // this.frameLen = 7;
+    this.tickCount = 0;
+    this.ticksPerFrame = 6;
+    this.frameLen = 4;
     
     this.draw = this.draw.bind(this);
     this.move = this.move.bind(this);
@@ -82,47 +90,46 @@ class Fox extends Entity {
   }
 
   draw(ctx) {
-    // this.setWalkDir();
-    // if (this.walking) {
-    //   this.drawFoxWalking(ctx);
-    // } else {
-    //   this.drawFoxStanding(ctx);
-    // }
-    ctx.drawImage(this.foxSprite, 9, 8, 15, 24, this.pos[0], this.pos[1], 15, 24);
+    this.setWalkDir();
+    if (this.walking) {
+      this.drawFoxWalking(ctx);
+    } else {
+      this.drawFoxStanding(ctx);
+    }
   
     this.update();
   }
 
-  // drawFoxWalking(ctx) {
-  //   if (this.walkDir === 'down') {
-  //     this.frameLen = WALK_DOWN.length;
-  //     ctx.drawImage(this.foxSprite, WALK_DOWN[this.frameIndex], 30, 16, 24, this.pos[0], this.pos[1], 32, 48);
-  //   } else if (this.walkDir === 'up') {
-  //     this.frameLen = WALK_UP.length;
-  //     ctx.drawImage(this.foxSprite, WALK_UP[this.frameIndex], 120, 17, 24, this.pos[0], this.pos[1], 34, 48);
-  //   } else if (this.walkDir === 'right') {
-  //     this.frameLen = WALK_SIDE.length;
-  //     ctx.drawImage(this.foxSprite, WALK_SIDE[this.frameIndex], 120, 19, 24, this.pos[0], this.pos[1], 38, 48);
-  //   } else if (this.walkDir === 'left') {
-  //     this.frameLen = WALK_SIDE.length;
-  //     ctx.drawImage(this.foxSprite, WALK_SIDE[this.frameIndex], 30, 19, 24, this.pos[0], this.pos[1], 38, 48);
-  //   }
-  // }
+  drawFoxWalking(ctx) {
+    if (this.walkDir === 'down') {
+      this.frameLen = WALK_DOWN.length;
+      ctx.drawImage(this.foxSprite, WALK_DOWN[this.frameIndex], 8, 15, 24, this.pos[0], this.pos[1], 30, 48);
+    } else if (this.walkDir === 'up') {
+      this.frameLen = WALK_UP.length;
+      ctx.drawImage(this.foxSprite, WALK_UP[this.frameIndex], 70, 15, 26, this.pos[0], this.pos[1], 30, 52);
+    } else if (this.walkDir === 'right') {
+      this.frameLen = WALK_RIGHT.length;
+      ctx.drawImage(this.foxSprite, WALK_RIGHT[this.frameIndex], 42, 25, 22, this.pos[0], this.pos[1], 50, 44);
+    } else if (this.walkDir === 'left') {
+      this.frameLen = WALK_LEFT.length;
+      ctx.drawImage(this.foxSprite, WALK_LEFT[this.frameIndex], 106, 25, 22, this.pos[0], this.pos[1], 50, 44);
+    }
+  }
 
   drawFoxStanding(ctx) {
     if (this.walkDir === 'down') {
-      ctx.drawImage(this.foxSprite, 33, 1, 16, 22, this.pos[0], this.pos[1], 32, 44);
+      ctx.drawImage(this.foxSprite, 9, 8, 15, 24, this.pos[0], this.pos[1], 30, 48);
     } else if (this.walkDir === 'up') {
-      ctx.drawImage(this.foxSprite, 63, 1, 16, 22, this.pos[0], this.pos[1], 32, 44);
+      ctx.drawImage(this.foxSprite, 9, 70, 15, 26, this.pos[0], this.pos[1], 30, 52);
     } else if (this.walkDir === 'right') {
-      ctx.drawImage(this.foxSprite, 331, 120, 19, 23, this.pos[0], this.pos[1], 38, 46);
+      ctx.drawImage(this.foxSprite, 3, 42, 25, 22, this.pos[0], this.pos[1], 50, 44);
     } else if (this.walkDir === 'left') {
-      ctx.drawImage(this.foxSprite, 151, 0, 19, 23, this.pos[0], this.pos[1], 38, 46);
+      ctx.drawImage(this.foxSprite, 4, 106, 25, 22, this.pos[0], this.pos[1], 50, 44);
     }
   }
 
   setWalkDir() {
-    if (this.down && !this.left && !this.right && !this.RIGHT) {
+    if (this.down && !this.left && !this.right && !this.left) {
       if (this.walkDir !== 'down') this.frameIndex = 0;
       this.walkDir = 'down';
     } else if (!this.down && this.left && !this.right && !this.up) {
@@ -139,13 +146,14 @@ class Fox extends Entity {
 
   update() {
     this.tickCount += 1;
+
     if (this.tickCount > this.ticksPerFrame) {
       this.tickCount = 0;
-      // if (this.frameIndex < this.frameLen - 1) {
-      //   this.frameIndex += 1;
-      // } else {
-      //   this.frameIndex = 0;
-      // }
+      if (this.frameIndex < this.frameLen - 1) {
+        this.frameIndex += 1;
+      } else {
+        this.frameIndex = 0;
+      }
     }
   }
 }
