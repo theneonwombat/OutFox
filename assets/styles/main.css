@@ -1,0 +1,13 @@
+body {
+  display: flex;
+}
+
+#game-container {
+  height: 600px;
+  width: 800px;
+  margin: auto;
+}
+
+#game-canvas {
+  background: chartreuse;
+}
