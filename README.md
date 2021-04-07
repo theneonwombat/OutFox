@@ -15,8 +15,11 @@ Also, if this idea is no good for some reason, could have a game where the fox s
 
 ### Wireframe
 I'm going to try to insert the wireframe I made here
+
 ![Wireframe](./dist/images/wireframe.png)
-here's a fox
+
+Here's a fox
+
 ![Fox](./dist/images/foxguy.png)
 
 ### Timeline
