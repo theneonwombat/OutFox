@@ -33,18 +33,16 @@ class Game {
         
         ctx.drawImage(this.background, 0, 0, this.gameWidth, this.gameHeight);
         this.grasspatch.draw(ctx);
+        this.chickens.forEach( chicken => chicken.draw(ctx));
+        this.fox.draw(ctx);
+    }
+}
 
-        // ctx.fillRect(158, 90, 162, 202);
+export default Game;
+
+// ctx.fillRect(158, 90, 162, 202);
         // ctx.fillRect(158, 367, 162, 202);
         // ctx.drawImage(this.link.itemSprite, 174, 500, 16, 16, 28, 340, 32, 32);
         // ctx.drawImage(this.link.itemSprite, 174, 500, 16, 16, 28, 305, 32, 32);
         // ctx.drawImage(this.link.itemSprite, 174, 500, 16, 16, 1005, 340, 32, 32);
         // ctx.drawImage(this.link.itemSprite, 174, 500, 16, 16, 1005, 305, 32, 32);
-        this.chickens.forEach( chicken => chicken.draw(ctx));
-        this.fox.draw(ctx);
-    }
-}
-    
-Game.FPS = 32;
-
-export default Game;
