@@ -29,6 +29,4 @@ class Entity {
   }
 }
 
-const NORMAL_FRAME_TIME_DELTA = 1000 / 60;
-
 export default Entity;

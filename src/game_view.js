@@ -6,6 +6,8 @@ class GameView {
     this.game = game;
     this.animate = this.animate.bind(this);
     this.fox = this.game.fox;
+    this.width = game.width;
+    this.height = game.height;
   }
 
   bindKeyHandlers() {
@@ -20,17 +22,16 @@ class GameView {
   }
 
   animate(time) {
-
     const timeDelta = time - this.lastTime;
 
     this.game.step(timeDelta);
     this.game.draw(this.ctx);
+    
     this.lastTime = time;
 
     requestAnimationFrame(this.animate);
-
+    //requestAnimationFrame invokes with time
   }
-
 
   newGame() {
     this.game = new Game();

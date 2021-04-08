@@ -6,8 +6,13 @@ body {
   height: 600px;
   width: 800px;
   margin: auto;
+  margin-top: 60px;
 }
 
-#game-canvas {
-  background: chartreuse;
+/* #game-canvas {
+  background: green;
+} */
+
+.tall-grass {
+  background: lightseagreen;
 }
