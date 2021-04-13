@@ -13,7 +13,7 @@ class Fox extends Entity {
   constructor(options) {
     super(options);
     this.foxSprite = new Image();
-    this.foxSprite.src = "../assets/sprites/cutefox.png";
+    this.foxSprite.src = "./assets/sprites/cutefox.png";
     this.pos = [400, 300];
     this.box = [15, 24];
     this.frameIndex = 0;

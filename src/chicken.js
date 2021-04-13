@@ -4,7 +4,7 @@ class Chicken extends Entity {
   constructor(options) {
     super(options);
     this.chickenSprite = new Image();
-    this.chickenSprite.src = '../assets/sprites/chickens.png'
+    this.chickenSprite.src = './assets/sprites/chickens.png'
     this.box = [12, 12];
 
     this.draw = this.draw.bind(this);

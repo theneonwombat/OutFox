@@ -11,7 +11,7 @@ class Game {
         this.leftWall = 10;
         this.rightWall = options.width - 10;
         this.background = new Image();
-        this.background.src = '../assets/backgrounds/field.png';
+        this.background.src = './assets/backgrounds/field.png';
         this.fox = new Fox({  game: this });
 
         this.chickens = [new Chicken({ pos: [600,400], game: this })];
